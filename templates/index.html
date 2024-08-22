@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Clientes</h1>
+        <form class="form-inline my-3" method="GET" action="/">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar cliente" name="search">
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        </form>
+        <a href="/add" class="btn btn-primary mb-3">Adicionar Cliente</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>
+                        <a href="/edit/{{ cliente.id }}" class="btn btn-warning">Editar</a>
+                        <a href="/delete/{{ cliente.id }}" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
